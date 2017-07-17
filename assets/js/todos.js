@@ -1,24 +1,33 @@
 // Check Off Specific Todos By Clicking
 
-$("li").click(function()
+$("ul").on("click","li",function()
 {
-	console.log($(this).css("color"));
-	// if it's gray
-	if($(this).css("color") === "rgb(128, 128, 128)")
-		{
-			// turn it black
-			$(this).css({
+	$(this).toggleClass("completed");
+})
 
-				color : "black",
-				textDecoration : "none"
-			})
-		}
-	else
+
+// Click on  X to delete ToDo Task
+$("ul").on("click","span",function(event)
+{
+	event.stopPropagation();
+	$(this).parent().fadeOut(500, function()
 		{
-			// turn it gray
-			$(this).css({
-				color : "gray",
-				textDecoration : "line-through"
-			})
-		}
+			$(this).remove();
+		});
+})
+
+
+// Adds Tasks to the ToDo list
+$("input[type='text']").keypress(function(event){
+
+	if(event.which === 13)
+	{
+		// if the enter key is pressed
+		// this Variable will grab the test information
+		var toDoText = $(this).val();	
+
+		//create a new li and add to the Ul
+		$('ul').append("<li><span>x</span> " + toDoText + "</li>");
+		$(this).val("");
+	}
 })
