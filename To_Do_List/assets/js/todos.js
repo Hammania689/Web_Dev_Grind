@@ -35,6 +35,6 @@ $("input[type='text']").keypress(function(event){
 
 // Toogle Input 
 $(".fa-plus").click((function(event) {
-	$("input[type ='text']").fadeToggle()
+	$("input[type ='text']").fadeToggle();
 	/* Act on the event */
 }));
