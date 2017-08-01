@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Api Test</title>
+<!--ApiKey : AIzaSyDMjj2E5rQxVcX20L9g-HLN1pOtnFnpZYs !-->
+	<style>
+		#map
+		{ 
+			height: 400px;
+			width: 100%;
+		}
+	</style>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMjj2E5rQxVcX20L9g-HLN1pOtnFnpZYs&callback=initMap" type="text/javascript" charset="utf-8" async defer>
+	</script>
+</head>
+
+<body>
+		<div id="map">
+		</div>
+			<script>
+				 var uluru = {lat: -25.363, lng: 131.044};
+				
+
+				function initMap() 
+				{
+										
+						var map = new google.maps.Map(document.getElementById('map'),
+						{
+							zoom : 4,
+							center : uluru,
+						});	
+
+					  var image = {
+					    url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5Dkr_uvia_yLuIVfGJqg0fvjtH6DPyctToXXXUljJBF0XfDDmG12E5g',
+					    // This marker is 20 pixels wide by 32 pixels high.
+					    size: new google.maps.Size(900, 200),
+					    // The origin for this image is (0, 0).
+					    origin: new google.maps.Point(0, 0),
+					    // The anchor for this image is the base of the flagpole at (0, 32).
+					    anchor: new google.maps.Point(0, 32)
+					  };
+					  // Shapes define the clickable region of the icon. The type defines an HTML
+					  // <area> element 'poly' which traces out a polygon as a series of X,Y points.
+					  // The final coordinate closes the poly by connecting to the first coordinate.
+					  var shape = 
+					  {
+					    coords: [1, 1, 1, 20, 18, 20, 18, 1],
+					    type: 'poly'
+					  };
+
+					var marker = new google.maps.Marker(
+					{
+						position : uluru,
+						map : map,
+						draggable : true,
+						icon : image
+					});
+				}
+
+
+			</script>
+</body>
+</html>
